@@ -14,7 +14,7 @@ public class Enmey : MonoBehaviour
   void Start()
   {
     TakeDamnge(10);
-    Debug.Log("state :" + GameMgrObject.gameState);
+    Debug.Log("state :");
   }
 
 }
