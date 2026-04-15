@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
     public float jumpPower = 10f; // 점프 힘 설정
 
     private Rigidbody2D rb;
+    private Animator anim; // 플레이어의 애니메이션 상태를 바꾸기 위해 선언합니다
     private bool isGrounded = false; // 바닥에 점프 가능한 상태인지 확인
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>(); // 게임이 시작될 때 우리 몸에 붙어있는 Animator 컴포넌트를 가져옵니다
 
 
         if (rb == null)
@@ -36,6 +38,12 @@ public class Player : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
         isGrounded = false;
+
+        // 애니메이터가 연결되어 있다면, 애니메이터의 state 값을 1(점프 상태)로 바꿔줍니다
+        if (anim != null)
+        {
+            anim.SetInteger("state", 1);
+        }
     }
 
     // M 키로 이동
@@ -63,6 +71,12 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = true; // 무언가에 닿으면(바닥) 다시 점프 가능해집니다
+
+        // 바닥에 닿았을 때(착지) 애니메이터의 state 값을 2(착지 상태)로 바꿔줍니다
+        if (anim != null)
+        {
+            anim.SetInteger("state", 2);
+        }
 
         if (collision.gameObject.name == "ezgif.com-gif-to-sprite-converter_0")
         {
