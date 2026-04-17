@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
 
     private void OnEnable()
     {
-        float randomtime = Random.Range(minSpawnTime, maxSpawnTIme);
+
         Invoke("Spawn", 1.5f);
 
     }
@@ -22,7 +22,8 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        Debug.Log("Spawn");
+        float randomtime = Random.Range(minSpawnTime, maxSpawnTIme);
+
         GameObject Randombuilding = buildingPefads[Random.Range(0, buildingPefads.Length)];
         Instantiate(Randombuilding, transform.position, Quaternion.identity);
         Invoke("Spawn", randomtime);

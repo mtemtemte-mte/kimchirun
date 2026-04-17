@@ -8,21 +8,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 767428032894545780, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
+    - target: {fileID: 867875739323688795, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
+      propertyPath: speed
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 767428032894545780, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.06
+    - target: {fileID: 2138969003653232503, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.3009
       objectReference: {fileID: 0}
-    - target: {fileID: 767428032894545780, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.83
+    - target: {fileID: 2138969003653232503, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.3009
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138969003653232503, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.3009
       objectReference: {fileID: 0}
     - target: {fileID: 2138969003653232503, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.6171
       objectReference: {fileID: 0}
     - target: {fileID: 2138969003653232503, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -61,14 +65,35 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3569271318268819835, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
+      propertyPath: m_Size.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569271318268819835, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
+      propertyPath: m_Size.y
+      value: 1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569271318268819835, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1116507116414994308, guid: 165ee6ed6b594174795161e3cefe90e1, type: 3}
+      objectReference: {fileID: -5254274414396753833, guid: e9acb976f289da148a651e7854d8cd67, type: 3}
+    - target: {fileID: 3569271318268819835, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569271318268819835, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569271318268819835, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8738401504982339584, guid: ed3b1c62571a7ac4887c411e3e386a8f, type: 3}
       propertyPath: m_Name
       value: building_05 Variant 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

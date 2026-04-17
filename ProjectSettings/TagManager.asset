@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Enemy
+  - food
+  - gay
+  - Gold
   layers:
   - Default
   - TransparentFX
@@ -40,9 +44,6 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: one
-    uniqueID: 2865432177
     locked: 0
   m_RenderingLayers:
   - Default

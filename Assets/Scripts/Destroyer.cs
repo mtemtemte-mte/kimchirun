@@ -17,7 +17,7 @@ public class Destroyer : MonoBehaviour
     {
         float cameraLeftEdge = -mainCamera.transform.position.x -
         mainCamera.orthographicSize * mainCamera.aspect;
-        Debug.Log(mainCamera.aspect);
+
         float objectRighEdge = spriteRenderer.bounds.max.x;
 
 

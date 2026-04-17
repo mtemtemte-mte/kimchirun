@@ -6,10 +6,22 @@ public class Player : MonoBehaviour
     [Header("이동 설정")]
     public float moveSpeed = 7f;
     public float jumpPower = 10f; // 점프 힘 설정
-
+    public int lives = 3;
     private Rigidbody2D rb;
     private Animator anim; // 플레이어의 애니메이션 상태를 바꾸기 위해 선언합니다
-    private bool isGrounded = false; // 바닥에 점프 가능한 상태인지 확인
+    public bool isInvincile;
+    private Collider2D collider2D;
+    private Animator animator;
+    private Rigidbody2D rigidBody;
+
+    private void Awake()
+    {
+        rigidBody = GetComponent<Rigidbody2D>();
+        collider2D = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
+
+    }
+
 
     void Start()
     {
@@ -28,7 +40,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         // 스페이스바를 눌렀을 때 점프 실행
-        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
+        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             Jump();
         }
@@ -37,7 +49,7 @@ public class Player : MonoBehaviour
     private void Jump()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-        isGrounded = false;
+
 
         // 애니메이터가 연결되어 있다면, 애니메이터의 state 값을 1(점프 상태)로 바꿔줍니다
         if (anim != null)
@@ -62,25 +74,85 @@ public class Player : MonoBehaviour
     // 혹시 Player Input의 Unity Events 방식으로 OnJump를 사용하실 경우를 위해 추가
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        if (context.performed)
         {
             Jump();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        isGrounded = true; // 무언가에 닿으면(바닥) 다시 점프 가능해집니다
-
-        // 바닥에 닿았을 때(착지) 애니메이터의 state 값을 2(착지 상태)로 바꿔줍니다
-        if (anim != null)
+        if (other.gameObject.CompareTag("food"))
         {
-            anim.SetInteger("state", 2);
+            Debug.Log("먹었다");
+            Heal();
+            Destroy(other.gameObject);
         }
-
-        if (collision.gameObject.name == "ezgif.com-gif-to-sprite-converter_0")
+        else if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("게임오버");
+            Debug.Log("데미지 입었다");
+            Destroy(other.gameObject);
+            if (isInvincile == false)
+            {
+                Dmage();
+            }
+        }
+        else if (other.gameObject.CompareTag("Gold"))
+        {
+            StartInvincible();
+            Destroy(other.gameObject);
         }
     }
-}   // ← 여기서 클래스 끝
+
+
+    private void Heal()
+    {
+        lives = Mathf.Min(lives + 1, 3);
+        Debug.Log("남은채력" + lives);
+
+        if (lives == 3)
+        {
+
+        }
+    }
+
+    private void Dmage()
+    {
+        lives--;
+        if (lives < 0)
+        {
+            Debug.Log("게임오버");
+
+
+        }
+        Debug.Log("남은채력" + lives);
+
+    }
+    private void StartInvincible()
+    {
+        isInvincile = true;
+        Invoke("멈춤 무적", 5f);
+
+    }
+    private void StopInvincible()
+    {
+        isInvincile = false;
+    }
+    private void KIllplayer()
+    {
+        collider2D.enabled = false;
+        animator.enabled = false;
+        rigidBody.AddForceY(5f, ForceMode2D.Impulse);
+
+    }
+
+}
+
+
+
+
+
+
